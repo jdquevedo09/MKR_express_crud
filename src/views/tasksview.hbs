@@ -2,8 +2,14 @@
 <ul>
 {{#each tasks}}
 
+
+<a href="/tasks/{{_id}}"><i class="fa fa-pencil"></i></a>
 <li>{{title}} ---- {{description}} 
 <input type="checkbox" checked= {{status}}>
+
+<a href="/tasks/{{_id}}"><button type="submit">editar</button></a>
+
+
 <form action="/tasks/{{_id}}?_method=DELETE" method="POST">
 <input type="hidden" name="_method" value="DELETE">
 <button type="submit">Delete</button>

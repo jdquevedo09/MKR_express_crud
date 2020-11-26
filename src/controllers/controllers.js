@@ -22,6 +22,20 @@ const deleteTask = async (req,res)=>{
 }
 // TIDI List One task - edit one Task - change status
 
+const getTask= async (req,res)=>{
+    const { id }= req.params;
+    const task = await Task.findById(id);
+    res.render('editForm',task);
+    
+}
+
+const editTask = async (req,res)=>{
+    const {title, description} = req.body
+    const {id}=req.params;
+    await Task.findByIdAndUpdate(id,{title,description});
+    res.redirect('/tasks');
+}
+
 module.exports = {
-    home, getTasks, createTask, deleteTask
+    home, getTasks, createTask, deleteTask, getTask, editTask
 }
